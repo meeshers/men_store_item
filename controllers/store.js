@@ -46,6 +46,17 @@ router.get('/:id', (req,res)=>{
   })
 })
 
+router.get('/:id/edit', (req,res)=>{
+  db.Stores.findById(req.params.id, function(error, foundStore){
+    if(error){
+      console.log(error);
+      res.send("Something went wrong");
+    } else {
+      res.render(`store/edit`, {store: foundStore});
+    }
+  })
+})
+
 //delete
 router.delete('/:id', (req,res)=>{
   db.Stores.findByIdAndDelete(req.params.id, function(error, deleteStore){
@@ -57,5 +68,20 @@ router.delete('/:id', (req,res)=>{
     }
   })
 })
+
+//edit
+router.put('/:id',(req,res)=>{
+  db.Stores.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(error, updateStore){
+    if(error){
+      console.log(error);
+      res.send("Something went wrong");
+    } else {
+      res.redirect(`/store/${updateStore._id}`);
+    }
+  })
+})
+
+//update
+
 
 module.exports = router;
