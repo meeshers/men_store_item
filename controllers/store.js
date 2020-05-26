@@ -5,12 +5,33 @@ const db = require('../models');
 
 // store index
 router.get('/', (req,res)=>{
-  res.render('store/index');
+  db.Stores.find({}, function(error, allStores){
+    if(error){
+      console.log(error);
+      res.send("Something went wrong");
+    } else {
+      res.render('store/index', {stores: allStores});
+    }
+  })
+  //res.render('store/index');
 })
 
 // new route
 router.get('/new', (req,res)=>{
   res.render('store/new');
+})
+
+// create
+router.post('/', (req,res)=>{
+  db.Stores.create(req.body, function(error,createdStore){
+    if(error){
+      console.log(error);
+      res.send("Something went wrong");
+    } else {
+      res.redirect('/store');
+    }
+  });
+  //res.send(req.body);
 })
 
 

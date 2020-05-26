@@ -6,6 +6,21 @@
   <title>New Store</title>
 </head>
 <body>
-  this is the new store page
+  
+  <header>
+    <h1>View models</h1>
+    <ul>
+      <li><a href="/store">Stores</a></li>
+      <li><a href="">Items</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <h2>Add new store</h2>
+    <form action='/store' method="POST">
+      Name: <input type="text" name="name" placeholder="Store name">
+      <button type="submit">Create Store</button>
+    </form>
+  </main>
 </body>
 </html>
