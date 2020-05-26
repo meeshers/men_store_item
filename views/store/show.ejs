@@ -9,6 +9,10 @@
   <h1>Store info page</h1>
   <p><%= store.name %> </p>
 
+  <form action="/store/<%= store._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+  </form>
+
   <a href="/store">Go back</a>
 </body>
 </html>

@@ -46,4 +46,16 @@ router.get('/:id', (req,res)=>{
   })
 })
 
+//delete
+router.delete('/:id', (req,res)=>{
+  db.Stores.findByIdAndDelete(req.params.id, function(error, deleteStore){
+    if(error){
+      console.log(error);
+      res.send("Something went wrong");
+    } else {
+      res.redirect('/store');
+    }
+  })
+})
+
 module.exports = router;
