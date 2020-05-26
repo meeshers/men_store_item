@@ -34,5 +34,16 @@ router.post('/', (req,res)=>{
   //res.send(req.body);
 })
 
+//show
+router.get('/:id', (req,res)=>{
+  db.Stores.findById(req.params.id, function(error, foundStore){
+    if(error){
+      console.log(error);
+      res.send("Something went wrong");
+    } else {
+      res.render('store/show', {store: foundStore});
+    }
+  })
+})
 
 module.exports = router;

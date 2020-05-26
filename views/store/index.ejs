@@ -13,7 +13,7 @@
   <ul>
     <% stores.forEach(store => { %>
     <li>
-      <%= store.name %>
+      <a href="/store/<%= store._id %>"><%= store.name %></a>
     </li>
 
     <% }) %>
