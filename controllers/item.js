@@ -24,7 +24,6 @@ router.get('/new', (req,res)=>{
       res.render('items/new', {stores: foundStores});
     }
   })
-
 })
 
 router.post('/', (req,res)=>{
@@ -33,7 +32,15 @@ router.post('/', (req,res)=>{
       console.log(error);
       res.send("something went wrong");
     } else {
-      res.redirect('/item');
+      db.Stores.findById(createdItem.store, function(err,foundStores){
+        if(err){
+          console.log(error);
+        } else{
+          foundStores.item.push(createdItem);
+          foundStores.save();
+          res.redirect('/item');
+        }
+      });
     }
   });
 });
