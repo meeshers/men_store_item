@@ -60,6 +60,17 @@ router.get('/:id/edit', (req,res)=>{
     } else {
       res.render('items/edit', {item: foundItem});
     }
+  });
+});
+
+router.put('/:id', (req,res)=>{
+  db.Items.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(error, foundItem){
+    if(error){
+      console.log(error);
+      res.send("something went wrong");
+    } else {
+      res.redirect(`/item/${foundItem._id}`);
+    }
   })
 })
 
