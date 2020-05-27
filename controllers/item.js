@@ -16,7 +16,15 @@ router.get('/', (req,res)=>{
 });
 
 router.get('/new', (req,res)=>{
-  res.render('items/new');
+  db.Stores.find({}, function(err, foundStores){
+    if(err){
+      console.log(err);
+      res.send("something went wrong");
+    } else{
+      res.render('items/new', {stores: foundStores});
+    }
+  })
+
 })
 
 router.post('/', (req,res)=>{

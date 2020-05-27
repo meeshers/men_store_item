@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Item</title>
 </head>
+
 <body>
-  
+
   <header>
     <h1>View models</h1>
     <ul>
@@ -18,9 +20,18 @@
   <main>
     <h2>Add new Item</h2>
     <form action='/item' method="POST">
+      <p>
+        <select name="store">
+          <% stores.forEach(store =>{ %>
+            <option value="<%= store._id %> "><%= store.name %> </option>
+
+          <% }) %>
+        </select>
+      </p>
       Name: <input type="text" name="name" placeholder="item name">
       <button type="submit">Create Item</button>
     </form>
   </main>
 </body>
+
 </html>
