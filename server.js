@@ -12,6 +12,7 @@ app.use(methodOverride('_method'));
 
 const controllers = require('./controllers');
 app.use('/store', controllers.store);
+app.use('/item', controllers.item);
 
 app.set('view engine', 'ejs');
 // store

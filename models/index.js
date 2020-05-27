@@ -13,5 +13,6 @@ mongoose.connect(con, {
 });
 
 module.exports = {
-  Stores: require('./Store')
+  Stores: require('./Store'),
+  Items: require('./Item')
 }

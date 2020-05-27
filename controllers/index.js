@@ -1,3 +1,4 @@
 module.exports = {
-  store: require('./store')
+  store: require('./store'),
+  item: require('./item')
 }
