@@ -41,6 +41,15 @@ router.get('/:id', (req,res)=>{
   });
 });
 
-
+router.delete('/:id', (req,res)=>{
+  db.Items.findByIdAndDelete(req.params.id, function(error, foundItem){
+    if(error){
+      console.log(error);
+      res.send("something went wrong");
+    } else {
+      res.redirect('/item');
+    }
+  });
+});
 
 module.exports = router;
