@@ -15,5 +15,20 @@ router.get('/', (req,res)=>{
   });
 });
 
+router.get('/new', (req,res)=>{
+  res.render('items/new');
+})
+
+router.post('/', (req,res)=>{
+  db.Items.create(req.body, function(error, createdItem){
+    if(error){
+      console.log(error);
+      res.send("something went wrong");
+    } else {
+      res.redirect('/item');
+    }
+  })
+})
+
 
 module.exports = router;
