@@ -52,4 +52,15 @@ router.delete('/:id', (req,res)=>{
   });
 });
 
+router.get('/:id/edit', (req,res)=>{
+  db.Items.findById(req.params.id, function(error, foundItem){
+    if(error){
+      console.log(error);
+      res.send("something went wrong");
+    } else {
+      res.render('items/edit', {item: foundItem});
+    }
+  })
+})
+
 module.exports = router;
