@@ -27,8 +27,20 @@ router.post('/', (req,res)=>{
     } else {
       res.redirect('/item');
     }
-  })
-})
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  db.Items.findById(req.params.id, function(error, foundItem){
+    if(error){
+      console.log(error);
+      res.send("something went wrong");
+    } else {
+      res.render('items/show', {item: foundItem});
+    }
+  });
+});
+
 
 
 module.exports = router;

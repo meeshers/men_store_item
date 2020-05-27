@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show page</title>
+</head>
+<body>
+  <h1>Item page</h1>
+  <p><%= item.name %> </p>
+
+  <form action="/item/<%= item._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+  </form>
+
+  <a href="/item/<%= item.id %>/edit ">Edit item</a>
+  <a href="/item">Go back</a>
+</body>
+</html>
